@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Tab Regex",
-  "description": "Renaming tabs",
+  "description": "Renaming tabs via rules",
   "version": "0.1",
 
   "permissions": [

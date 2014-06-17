@@ -14,11 +14,15 @@
         
         replacements = [];
         for (i = 0; i < serializedReplacements.length; i += 1) {
-          serializedReplacement = serializedReplacements[i].split('-->');
-          replacements.push([
-            new RegExp(serializedReplacement[0]),
-            serializedReplacement[1]
-          ]);
+          // http://upshots.org/javascript/javascript-regexp-to-remove-comments
+          serializedReplacement = serializedReplacements[i].replace(/(\/\*([\s\S]*?)\*\/)|(\/\/([\w\W]*)$)/gm, '');
+          if (serializedReplacement) {
+            serializedReplacement = serializedReplacement.split('-->');
+            replacements.push([
+              new RegExp(serializedReplacement[0]),
+              serializedReplacement[1]
+            ]);
+          }
         }
         
         if (complete !== undefined) {
