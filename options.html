@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tab Regex</title>
+    
+    <link href='css/bootstrap.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div class='container'>
+      <h1>Tab Regex</h1>
+      <div class="panel panel-default">
+        <div class="panel-heading">Replacements</div>
+        <div class="panel-body">
+          <textarea id='replacements-textarea' cols='80' rows='10' style='width: 100%'></textarea>
+        </div>
+        <div class="panel-footer">
+          List <code>regex-->replacement</code> on separate lines.
+          Use <code>()</code> and <code>$n</code> to 
+          <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Parenthesized_Substring_Matches'>
+            remember matches.
+          </a>
+        </div>
+      </div>
+      
+      <button id='save' class='btn btn-primary btn-lg btn-block'>Save</button>
+    </div>
+    
+    <script src='js/bootstrap.min.js'></script>
+    <script src='options.js'></script>
+  </body>
+</html>

@@ -4,7 +4,9 @@
   "use strict";
   
   chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-    document.title = message.title;
+    if (message.title !== undefined) {
+      document.title = message.title;
+    }
   });
   
 }(chrome, document));
