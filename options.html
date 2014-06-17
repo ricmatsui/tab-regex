@@ -8,23 +8,44 @@
   <body>
     <div class='container'>
       <h1>Tab Regex</h1>
-      <div class="panel panel-default">
-        <div class="panel-heading">Replacements</div>
-        <div class="panel-body">
-          <textarea id='replacements-textarea' cols='80' rows='10' style='width: 100%'></textarea>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>Replacement Rules</div>
+        <div class='panel-body'>
+          <textarea id='replacements-textarea' cols='80' rows='10' style='width: 100%' class='form-control'></textarea>
         </div>
-        <div class="panel-footer">
+        <div class='panel-footer'>
           List <code>regex-->replacement</code> on separate lines.
           Use <code>()</code> and <code>$n</code> to 
           <a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Parenthesized_Substring_Matches'>
-            remember matches.
-          </a>
+            remember matches
+          </a>,
+          and <a href='http://regexpal.com/'>RegexPal</a> for a quick reference.
         </div>
       </div>
-      
       <button id='save' class='btn btn-primary btn-lg btn-block'>Save</button>
+      <br>
+      <div class='panel panel-default'>
+        <div class='panel-heading'>Live Replacements</div>
+        <div class='panel-body'>
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>Original Title</th>
+                <th>Final Title</th>
+                <th>Rule</th>
+              </tr>
+            </thead>
+            <tbody id='recent-replacements-table'>
+            </tbody>
+          </table>
+        </div>
+        <div class='panel-footer'>
+          Open new tabs to see which replacements are being used.
+        </div>
+      </div>
     </div>
     
+    <script src='js/jquery-2.1.1.min.js'></script>
     <script src='js/bootstrap.min.js'></script>
     <script src='options.js'></script>
   </body>

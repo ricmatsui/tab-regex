@@ -32,19 +32,32 @@
           var originalTitle = tab.title,
             newTitle,
             replacement,
+            replaced = false,
             i;
 
           for (i = 0; i < replacements.length; i += 1) {
             replacement = replacements[i];
-            if ((newTitle = originalTitle.replace(new RegExp(
-                replacement[0]
-              ), replacement[1])) !== originalTitle) {
+            if ((newTitle = originalTitle.replace(replacement[0],
+                replacement[1])) !== originalTitle) {
+              replaced = true;
               break;
             }
           }
 
-          chrome.tabs.sendMessage(tabId, {
-            title: newTitle
+          if (replaced) {
+            chrome.tabs.sendMessage(tabId, {
+              title: newTitle
+            });
+          }
+          chrome.runtime.sendMessage({
+            replaced: {
+              originalTitle: originalTitle,
+              title: newTitle,
+              rule: (replaced ? [
+                replacement[0].source,
+                replacement[1]
+              ] : null)
+            }
           });
         }
       });
